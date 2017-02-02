@@ -2,7 +2,7 @@ FROM ruby:2.4
 
 RUN set -x && \
 	apt-get update && \
-	apt-get install -y lsb-release sudo ninja-build p7zip-full xvfb libgtkglext1-dev locales nodejs npm openjdk-7-jdk && \
+	apt-get install -y lsb-release sudo ninja-build p7zip-full xvfb libgtkglext1-dev locales nodejs npm openjdk-7-jdk rpm && \
 	npm update -g npm && \
     npm install -g n && \
     n stable && \
