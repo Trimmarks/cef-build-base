@@ -1,11 +1,12 @@
 FROM buildpack-deps:trusty
-ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 
 RUN { \
   echo 'install: --no-document'; \
   echo 'update: --no-document'; \
 } >> /etc/gemrc
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+RUN echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections
 RUN set -x && \
     apt-get update && \
     apt-get install -y software-properties-common && \
@@ -23,4 +24,4 @@ RUN set -x && \
 	cd /cef/automate && \
 	curl 'https://chromium.googlesource.com/chromium/src/+/master/build/install-build-deps.sh?format=TEXT' | base64 -d > install-build-deps.sh && \
 	chmod 755 install-build-deps.sh && \
-	./install-build-deps.sh --no-prompt --no-chromeos-fonts
+	./install-build-deps.sh --no-prompt --no-chromeos-fonts --no-arm 
