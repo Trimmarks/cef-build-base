@@ -1,11 +1,11 @@
 FROM buildpack-deps:trusty
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN { \
   echo 'install: --no-document'; \
   echo 'update: --no-document'; \
 } >> /etc/gemrc
-
-
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN set -x && \
     apt-get update && \
     apt-get install -y software-properties-common && \
