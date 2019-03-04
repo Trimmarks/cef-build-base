@@ -12,7 +12,7 @@ RUN set -x && \
     apt-get install -y software-properties-common && \
     apt-add-repository -y ppa:brightbox/ruby-ng && \
     apt-get update && \
-	apt-get install -y lsb-release sudo ninja-build p7zip-full xvfb libgtkglext1-dev locales nodejs npm openjdk-7-jdk rpm ruby2.4 ruby2.4-dev && \
+	apt-get install -y lsb-release sudo ninja-build p7zip-full xvfb libgtkglext1-dev locales nodejs npm openjdk-7-jdk rpm ruby2.4 ruby2.4-dev fonts-ipafont && \
 	npm update -g npm && \
     npm install -g n && \
     n stable && \
